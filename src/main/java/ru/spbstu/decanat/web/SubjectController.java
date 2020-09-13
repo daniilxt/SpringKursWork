@@ -26,20 +26,17 @@ public class SubjectController {
         this.subjectService = subjectsService;
     }
 
-    //  @PostMapping(value = "/addSubjects", consumes = "application/json", produces = "application/json")
     @PostMapping(value = "/add", consumes = "application/json", produces = "application/json")
     public Subject addSubjects(@RequestBody Subject newSubject) {
         return subjectService.addSubjects(newSubject);
     }
 
-    //    @GetMapping("/subjects")
     @GetMapping("/all")
     public ResponseEntity<List<Subject>> getAllSubjects() {
         List<Subject> list = subjectService.listSubjects();
         return new ResponseEntity<>(list, HttpStatus.OK);
     }
 
-    // @GetMapping("/subjects/{id}")
     @GetMapping("/id/{id}")
     public ResponseEntity<Subject> getSubjects(@PathVariable("id") Long id) {
         try {
@@ -49,7 +46,6 @@ public class SubjectController {
         }
     }
 
-    // @DeleteMapping(value = "/deleteSubjects/{id}")
     @DeleteMapping(value = "/delete/{id}")
     @ResponseStatus(HttpStatus.NO_CONTENT)
     public void deleteSubject(@PathVariable("id") Long id) {

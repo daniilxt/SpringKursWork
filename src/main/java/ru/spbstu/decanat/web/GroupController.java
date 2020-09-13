@@ -27,20 +27,18 @@ public class GroupController {
         this.groupService = groupService;
     }
 
-   // @PostMapping(value = "/addGroup", consumes = "application/json", produces = "application/json")
     @PostMapping(value = "/add", consumes = "application/json", produces = "application/json")
     public Group addGroup(@RequestBody Group newGroup) {
         return groupService.addGroups(newGroup);
     }
 
-    //@GetMapping("/Group")
     @GetMapping("/all")
     public ResponseEntity<List<Group>> getAllGroups() {
         List<Group> list = groupService.listGroups();
         return new ResponseEntity<>(list, HttpStatus.OK);
     }
 
-    //@GetMapping("/Group/{id}")
+
     @GetMapping("/id/{id}")
     public ResponseEntity<Group> getGroup(@PathVariable("id") Long id) {
         try {
@@ -50,7 +48,7 @@ public class GroupController {
         }
     }
 
-    //@DeleteMapping(value = "/deleteGroup/{id}")
+
     @DeleteMapping(value = "/delete/{id}")
     @ResponseStatus(HttpStatus.NO_CONTENT)
     public void deleteGroup(@PathVariable("id") Long id) {

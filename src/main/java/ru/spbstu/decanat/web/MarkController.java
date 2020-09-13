@@ -22,20 +22,17 @@ public class MarkController {
         this.markService = markService;
     }
 
-    //  @PostMapping(value = "/addMarks", consumes = "application/json", produces = "application/json")
     @PostMapping(value = "/add", consumes = "application/json", produces = "application/json")
     public Mark addMarks(@RequestBody Mark newMark) {
         return markService.addMarks(newMark);
     }
 
-    //@GetMapping("/marks")
     @GetMapping("/all")
     public ResponseEntity<List<Mark>> getAllMarks() {
         List<Mark> list = markService.listMarks();
         return new ResponseEntity<>(list, HttpStatus.OK);
     }
 
-    // @GetMapping("/marks/{id}")
     @GetMapping("/id/{id}")
     public ResponseEntity<Mark> getMarks(@PathVariable("id") Long id) {
         try {
@@ -45,7 +42,6 @@ public class MarkController {
         }
     }
 
-    //  @DeleteMapping(value = "/deleteMarks/{id}")
     @DeleteMapping(value = "/delete/{id}")
     @ResponseStatus(HttpStatus.NO_CONTENT)
     public void deleteMark(@PathVariable("id") Long id) {

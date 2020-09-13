@@ -37,9 +37,11 @@ public class TestDataInit implements CommandLineRunner {
         groupRepository.save(firstGroup);
         groupRepository.save(secondGroup);
         Person stud1 = new Person("Egor", "Ivanov", "Anatolevich", firstGroup, 'S');
+        Person stud2 = new Person("Oleg", "Sativa", "Og", firstGroup, 'S');
         Person teach1 = new Person("Elena", "Selivanova", "Olegovna", secondGroup, 'T');
         Person teach2 = new Person("Igor", "Vereninov", "Andreevich", secondGroup, 'T');
         personRepository.save(stud1);
+        personRepository.save(stud2);
         personRepository.save(teach1);
         personRepository.save(teach2);
 
@@ -49,6 +51,8 @@ public class TestDataInit implements CommandLineRunner {
         subjectRepository.save(oop);
 
         markRepository.save(new Mark(stud1, bio, teach1, 5));
+        markRepository.save(new Mark(stud2, bio, teach2, 2));
+        markRepository.save(new Mark(stud2, bio, teach2, 5));
 
         userRepository.save(new User("user", pwdEncoder.encode("pwd"), Collections.singletonList("ROLE_USER")));
         userRepository.save(new User("admin", pwdEncoder.encode("apwd"), Collections.singletonList("ROLE_ADMIN")));

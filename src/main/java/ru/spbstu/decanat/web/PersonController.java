@@ -26,20 +26,17 @@ public class PersonController {
         this.personService = personService;
     }
 
-   // @PostMapping(value = "/addPerson", consumes = "application/json", produces = "application/json")
     @PostMapping(value = "/add", consumes = "application/json", produces = "application/json")
     public Person addPerson(@RequestBody Person person) {
         return personService.addPerson(person);
     }
 
-    //@GetMapping("/Person")
     @GetMapping("/all")
     public ResponseEntity<List<Person>> getAllPerson() {
         List<Person> list = personService.listPerson();
         return new ResponseEntity<>(list, HttpStatus.OK);
     }
 
-    //@GetMapping("/Person/{id}")
     @GetMapping("/id/{id}")
     public ResponseEntity<Person> getPerson(@PathVariable("id") Long id) {
         try {
@@ -49,7 +46,6 @@ public class PersonController {
         }
     }
 
-    //@DeleteMapping(value = "/deletePerson/{id}")
     @DeleteMapping(value = "/delete/{id}")
     @ResponseStatus(HttpStatus.NO_CONTENT)
     public void deletePerson(@PathVariable("id") Long id) {
