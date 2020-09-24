@@ -37,6 +37,12 @@ public class PersonController {
         return new ResponseEntity<>(list, HttpStatus.OK);
     }
 
+    @GetMapping("/all/teachers")
+    public ResponseEntity<List<Person>> getAllTeachers() {
+        List<Person> list = personService.listTeachers();
+        return new ResponseEntity<>(list, HttpStatus.OK);
+    }
+
     @GetMapping("/id/{id}")
     public ResponseEntity<Person> getPerson(@PathVariable("id") Long id) {
         try {

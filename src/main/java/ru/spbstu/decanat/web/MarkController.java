@@ -7,7 +7,10 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.server.ResponseStatusException;
 import ru.spbstu.decanat.entity.Mark;
+import ru.spbstu.decanat.entity.Person;
 import ru.spbstu.decanat.exception.MarkNotFoundException;
+import ru.spbstu.decanat.exception.PersonNotFoundException;
+import ru.spbstu.decanat.repository.PersonRepository;
 import ru.spbstu.decanat.service.MarkService;
 
 import java.util.List;
@@ -16,6 +19,8 @@ import java.util.List;
 @RequestMapping("/marks")
 public class MarkController {
     private MarkService markService;
+    private PersonRepository personRepository;
+    private char STUDENT_TYPE = 'S';
 
     @Autowired
     public void setMarksService(MarkService markService) {
@@ -40,6 +45,12 @@ public class MarkController {
         } catch (MarkNotFoundException exception) {
             throw new ResponseStatusException(HttpStatus.BAD_REQUEST, "Marks not found");
         }
+    }
+
+    @GetMapping("/student/{id}")
+    public ResponseEntity<List<Mark>> getStudentMarks(@PathVariable long id) {
+        List<Mark> list = markService.listMarksByStudentId(id);
+        return new ResponseEntity<>(list, HttpStatus.OK);
     }
 
     @DeleteMapping(value = "/delete/{id}")

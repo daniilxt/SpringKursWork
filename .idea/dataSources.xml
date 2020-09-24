@@ -1,11 +1,11 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="DataSourceManagerImpl" format="xml" multifile-model="true">
-    <data-source source="LOCAL" name="dekanatDB@localhost" uuid="ec25c902-2b05-428f-9d2a-4936f02aab13">
+    <data-source source="LOCAL" name="@localhost" uuid="5194a5bd-c494-4a52-9052-24336a61d448">
       <driver-ref>mariadb</driver-ref>
       <synchronize>true</synchronize>
       <jdbc-driver>org.mariadb.jdbc.Driver</jdbc-driver>
-      <jdbc-url>jdbc:mariadb://localhost:3306/dekanatDB</jdbc-url>
+      <jdbc-url>jdbc:mariadb://localhost:3306</jdbc-url>
     </data-source>
   </component>
 </project>

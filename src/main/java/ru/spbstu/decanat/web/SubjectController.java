@@ -10,6 +10,7 @@ import ru.spbstu.decanat.entity.Mark;
 import ru.spbstu.decanat.entity.Subject;
 import ru.spbstu.decanat.exception.SubjectNotFoundException;
 import ru.spbstu.decanat.repository.MarkRepository;
+import ru.spbstu.decanat.repository.SubjectRepository;
 import ru.spbstu.decanat.service.SubjectService;
 
 import java.util.List;
@@ -46,7 +47,7 @@ public class SubjectController {
         }
     }
 
-    @DeleteMapping(value = "/delete/{id}")
+/*    @DeleteMapping(value = "/delete/id/{id}")
     @ResponseStatus(HttpStatus.NO_CONTENT)
     public void deleteSubject(@PathVariable("id") Long id) {
         try {
@@ -57,6 +58,17 @@ public class SubjectController {
                 subjectService.deleteSubjects(id);
             }
         } catch (EmptyResultDataAccessException exception) {
+
+        }
+    }*/
+
+    @DeleteMapping(value = "/delete/{id}")
+    @ResponseStatus(HttpStatus.NO_CONTENT)
+    public void deleteMark(@PathVariable("id") Long id) {
+        try {
+            subjectService.deleteSubjects(id);
+        } catch (EmptyResultDataAccessException exception) {
+            throw new ResponseStatusException(HttpStatus.NOT_ACCEPTABLE, "Such subject is related to mark");
 
         }
     }

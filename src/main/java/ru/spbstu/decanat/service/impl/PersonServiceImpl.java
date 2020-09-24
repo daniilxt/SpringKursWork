@@ -7,6 +7,7 @@ import ru.spbstu.decanat.exception.PersonNotFoundException;
 import ru.spbstu.decanat.repository.PersonRepository;
 import ru.spbstu.decanat.service.PersonService;
 
+import java.util.ArrayList;
 import java.util.List;
 import java.util.Optional;
 
@@ -19,6 +20,18 @@ public class PersonServiceImpl implements PersonService {
     @Override
     public List<Person> listPerson() {
         return (List<Person>) personRepository.findAll();
+    }
+
+    @Override
+    public List<Person> listTeachers() {
+        List<Person> list = listPerson();
+        List<Person> teachers = new ArrayList<>();
+        for (Person item : list) {
+            if (item.getType() == 'T') {
+                teachers.add(item);
+            }
+        }
+        return teachers;
     }
 
     @Override
