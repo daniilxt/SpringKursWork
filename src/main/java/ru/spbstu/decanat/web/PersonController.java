@@ -6,24 +6,23 @@ import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.server.ResponseStatusException;
-import ru.spbstu.decanat.entity.Mark;
 import ru.spbstu.decanat.entity.Person;
 import ru.spbstu.decanat.exception.PersonNotFoundException;
-import ru.spbstu.decanat.repository.MarkRepository;
+import ru.spbstu.decanat.service.MarkService;
 import ru.spbstu.decanat.service.PersonService;
 
 import java.util.List;
-import java.util.Optional;
 
 @RestController
 @RequestMapping("/person")
 public class PersonController {
+    private MarkService markService;
     private PersonService personService;
-    private MarkRepository markRepository;
 
     @Autowired
-    public void setPeopleService(PersonService personService) {
+    public void setPeopleService(PersonService personService, MarkService markService) {
         this.personService = personService;
+        this.markService = markService;
     }
 
     @PostMapping(value = "/add", consumes = "application/json", produces = "application/json")
@@ -56,12 +55,9 @@ public class PersonController {
     @ResponseStatus(HttpStatus.NO_CONTENT)
     public void deletePerson(@PathVariable("id") Long id) {
         try {
-            Optional<Mark> mark = markRepository.findMarkByStudent(id);
-            if (mark.isPresent()) {
-                throw new ResponseStatusException(HttpStatus.NOT_ACCEPTABLE, "Such person is related to mark");
-            } else {
-                personService.deletePerson(id);
-            }
+            markService.deleteAllStudentMarks(id);
+            personService.deletePerson(id);
+
         } catch (EmptyResultDataAccessException exception) {
 
         }

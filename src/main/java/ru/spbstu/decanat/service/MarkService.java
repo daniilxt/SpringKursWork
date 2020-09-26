@@ -7,6 +7,7 @@ import java.util.List;
 
 public interface MarkService {
     void deleteMarks(Long id);
+    void deleteAllStudentMarks(Long id);
     List<Mark> listMarks();
     List<Mark> listMarksByStudentId(Long id);
     Mark findMarks(Long id);

@@ -7,9 +7,7 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.server.ResponseStatusException;
 import ru.spbstu.decanat.entity.Mark;
-import ru.spbstu.decanat.entity.Person;
 import ru.spbstu.decanat.exception.MarkNotFoundException;
-import ru.spbstu.decanat.exception.PersonNotFoundException;
 import ru.spbstu.decanat.repository.PersonRepository;
 import ru.spbstu.decanat.service.MarkService;
 
@@ -62,6 +60,5 @@ public class MarkController {
 
         }
     }
-
 }
 
