@@ -53,9 +53,10 @@ public class TestDataInit implements CommandLineRunner {
         markRepository.save(new Mark(stud1, bio, teach1, 5));
         markRepository.save(new Mark(stud2, bio, teach2, 2));
         markRepository.save(new Mark(stud2, bio, teach2, 5));*/
-/*
-        userRepository.save(new User("user", pwdEncoder.encode("pwd"), Collections.singletonList("ROLE_USER")));
+     /*   userRepository.save(new User("user", pwdEncoder.encode("pwd"), Collections.singletonList("ROLE_USER")));
         userRepository.save(new User("admin", pwdEncoder.encode("apwd"), Collections.singletonList("ROLE_ADMIN")));
-*/
+        userRepository.save(new User("teacher", pwdEncoder.encode("tpwd"), Collections.singletonList("ROLE_TEACHER")));
+      
+      */
     }
 }
