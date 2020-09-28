@@ -47,21 +47,6 @@ public class SubjectController {
         }
     }
 
-/*    @DeleteMapping(value = "/delete/id/{id}")
-    @ResponseStatus(HttpStatus.NO_CONTENT)
-    public void deleteSubject(@PathVariable("id") Long id) {
-        try {
-            Optional<Mark> mark = markRepository.findMarkBySubject(id);
-            if (mark.isPresent()) {
-                throw new ResponseStatusException(HttpStatus.NOT_ACCEPTABLE, "Such subject is related to mark");
-            } else {
-                subjectService.deleteSubjects(id);
-            }
-        } catch (EmptyResultDataAccessException exception) {
-
-        }
-    }*/
-
     @DeleteMapping(value = "/delete/{id}")
     @ResponseStatus(HttpStatus.NO_CONTENT)
     public void deleteMark(@PathVariable("id") Long id) {
